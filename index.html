@@ -78,7 +78,7 @@
             <div class="trust-bar">
                 <div class="trust-item">
                     <span class="trust-icon">✅</span>
-                    <span>Sistema Validado</span>
+                    <span>Manual de Implementação Rápida (PDF)</span>
                 </div>
                 <div class="trust-item">
                     <span class="trust-icon">🚀</span>
@@ -93,9 +93,36 @@
                     <span>Método "Copia e Cola"</span>
                 </div>
             </div>
+            <p class="product-clarity">
+                Não é um curso de 50 horas. <br/> É um Manual de Implementação Rápida (PDF) focado em Vendas Silenciosas. <br/>Você lê, aplica e tem sua infraestrutura pronta, sem precisar aparecer.
+            </p>
         </div>
     </section>
 
+    <!-- Resultados Reais -->
+    <section class="results-real" id="resultados-reais">
+        <div class="container">
+            <div class="results-real-header">
+                <p class="section-badge">Prova Social</p>
+                <h2>Resultados Reais</h2>
+                <p>Prints de vendas e depoimentos enviados por alunos que aplicaram o Manual de Implementação Rápida.</p>
+            </div>
+            <div class="results-real-grid">
+                <div class="proof-card">
+                    <div class="proof-image placeholder">Imagem/Print 1</div>
+                    <p class="proof-caption">"Fiz minhas primeiras 3 vendas em 48h usando o roteiro em PDF."</p>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-image placeholder">Imagem/Print 2</div>
+                    <p class="proof-caption">"Copiei o texto do WhatsApp e fechei sem precisar aparecer."</p>
+                </div>
+                <div class="proof-card">
+                    <div class="proof-image placeholder">Imagem/Print 3</div>
+                    <p class="proof-caption">"Configurei tudo em um domingo e acordei com o primeiro pagamento."</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Call to Action Section -->
     <section class="cta-section">
         <div class="container">
@@ -130,9 +157,11 @@
                 <button class="cta-primary cta-main-button" onclick="startQuiz()">DESCUBRA SEU POTENCIAL DE VENDA AGORA</button>
                 
                 <p class="cta-guarantee">✅ Sem compromisso • ✅ Sem cadastro • ✅ Resultado imediato</p>
+                <p class="cta-format-highlight">Chega de aulas longas que dão sono. Nosso formato "Direto ao Ponto" respeita seu tempo.</p>
             </div>
         </div>
     </section>
+
 
     <!-- Quiz Section -->
     <section class="quiz-section" id="quiz">
@@ -216,13 +245,18 @@
             <div class="results-content">
                 <h2 class="results-title">🎯 Seu Diagnóstico Está Pronto!</h2>
                 <p class="results-message">Identificamos seu bloqueio principal e criamos um plano de ação personalizado para você começar a vender agora.</p>
-                
+                <div class="diagnostico-bridge hidden" id="diagnosticoBridge">
+                    <p class="diagnostico-label">Diagnóstico Personalizado</p>
+                    <h3 id="diagnosticoTitulo"></h3>
+                    <p id="diagnosticoTexto"></p>
+                </div>
                 <div class="action-plan">
                     <h3>🎯 Seu Plano de Ação Imediato:</h3>
                     <ul id="actionPlanList">
                         <!-- Will be populated by JavaScript -->
                     </ul>
                 </div>
+                
                 <p class="results-message">Antes de ir pros finalmentes e largar o botão de compra na sua cabeça…</p>
                 <!-- Honestidade Section -->
                 <div class="honesty-section">
@@ -245,7 +279,7 @@
                                 <p class="honesty-title">Você vai precisar fazer a sua parte.</p>
                                 <p class="honesty-text">Eu sei que isso aqui é óbvio, mas eu preciso falar:</p>
                                 <p class="honesty-text">Se você está esperando um curso que vai fazer todo o trabalho por você, pode esquecer.</p>
-                                <p class="honesty-text">Eu não vou te entregar um botão mágico que faz pessoas caírem do céu. O que eu vou te dar (lá ele) é um método direto, sem firulas, que funciona – desde que você execute. Se você não está disposto a fazer o que tem que ser feito, então esse curso, definitivamente, não é para você.</p>
+                                <p class="honesty-text">Eu não vou te entregar um botão mágico que faz pessoas caírem do céu. O que eu vou te dar é um método direto, sem firulas, que funciona – desde que você execute. Se você não está disposto a fazer o que tem que ser feito, então esse curso, definitivamente, não é para você.</p>
                             </div>
                         </div>
                     </div>
@@ -263,6 +297,8 @@
             </div>
         </div>
     </section>
+    
+    
 
     <script src="js/script.js"></script>
 </body>

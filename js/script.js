@@ -1,6 +1,25 @@
 let currentQuestion = 1;
 let answers = {};
 
+const diagnosticos = {
+    trafego: {
+        titulo: "Diagnóstico: O seu bloqueio é o 'Deserto Digital'",
+        texto: "Você até tem vontade, mas ninguém vê sua oferta. O manual 'Copie & Venda' resolve isso te entregando <strong>scripts de atração validados</strong>. Não é sobre sorte, é sobre copiar a estrutura de anúncio que obriga o cliente a clicar."
+    },
+    venda: {
+        titulo: "Diagnóstico: O seu bloqueio é a 'Fobia de Venda'",
+        texto: "Você acha que precisa ser chato ou insistente para vender? Errado. Com o nosso método de <strong>Vendas Silenciosas</strong>, a estrutura (PDF + Página) convence por você. O cliente compra sem você precisar dizer um único 'oi' no WhatsApp."
+    },
+    tecnica: {
+        titulo: "Diagnóstico: O seu bloqueio é a 'Paralisia Tecnológica'",
+        texto: "Pixel, domínio, integrações... isso te trava? O 'Copie & Venda' elimina a complexidade. Entregamos o checklist 'Copia e Cola' para você ter sua infraestrutura pronta em minutos, usando ferramentas gratuitas."
+    },
+    tempo: {
+        titulo: "Diagnóstico: O seu bloqueio é a 'Overdose de Informação'",
+        texto: "Você estuda muito, mas aplica pouco porque os cursos são longos demais. O nosso formato é um <strong>Manual de Implementação</strong>. Sem vídeos de 40 minutos. É ler o passo a passo e executar agora."
+    }
+};
+
 function startQuiz() {
     document.getElementById('quiz').classList.add('active');
     document.body.classList.add('modal-open');
@@ -118,6 +137,8 @@ function showResults() {
         listElement.appendChild(li);
     });
 
+    renderDiagnostico();
+
     document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -159,5 +180,73 @@ function generateActionPlan() {
     plans.push('Faça sua primeira venda nos próximos 7 dias seguindo esse plano exato');
     
     return plans;
+}
+
+function renderDiagnostico() {
+    const bridge = document.getElementById('diagnosticoBridge');
+    const tituloEl = document.getElementById('diagnosticoTitulo');
+    const textoEl = document.getElementById('diagnosticoTexto');
+
+    if (!bridge || !tituloEl || !textoEl) return;
+
+    const diagnosticoKey = mapObstaculoToDiagnostico(answers[4]);
+
+    if (!diagnosticoKey || !diagnosticos[diagnosticoKey]) {
+        bridge.classList.add('hidden');
+        tituloEl.textContent = '';
+        textoEl.innerHTML = '';
+        return;
+    }
+
+    const diagnostico = diagnosticos[diagnosticoKey];
+    tituloEl.textContent = diagnostico.titulo;
+    textoEl.innerHTML = diagnostico.texto;
+    bridge.classList.remove('hidden');
+}
+
+function mapObstaculoToDiagnostico(obstaculo) {
+    if (!obstaculo) {
+        return inferDiagnosticoByContext();
+    }
+
+    const normalized = obstaculo.toLowerCase();
+
+    if (normalized.includes('atrair') || normalized.includes('tráfego')) {
+        return 'trafego';
+    }
+
+    if (normalized.includes('converter') || normalized.includes('confiança')) {
+        return 'venda';
+    }
+
+    if (normalized.includes('informação') || normalized.includes('tempo')) {
+        return 'tempo';
+    }
+
+    if (normalized.includes('técnic') || normalized.includes('site')) {
+        return 'tecnica';
+    }
+
+    return inferDiagnosticoByContext();
+}
+
+function inferDiagnosticoByContext() {
+    if (answers[3] && (answers[3].includes('Menos de 30 minutos') || answers[3].includes('Entre 30 minutos'))) {
+        return 'tempo';
+    }
+
+    if (answers[2] && (answers[2].includes('Praticamente ninguém') || answers[2].includes('Menos de 100'))) {
+        return 'trafego';
+    }
+
+    if (answers[1] && (answers[1].includes('Não sei por onde começar'))) {
+        return 'tecnica';
+    }
+
+    if (answers[4] && answers[4].includes('vendas')) {
+        return 'venda';
+    }
+
+    return null;
 }
 
