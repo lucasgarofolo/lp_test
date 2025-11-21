@@ -1,6 +1,7 @@
 let currentQuestion = 1;
 let answers = {};
 
+// CUSTOMIZÁVEL: Ajuste mensagens de diagnóstico conforme sua oferta
 const diagnosticos = {
     trafego: {
         titulo: "Diagnóstico: O seu bloqueio é o 'Deserto Digital'",
@@ -142,6 +143,7 @@ function showResults() {
     document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
 }
 
+// CUSTOMIZÁVEL: Edite as regras abaixo para alterar o plano de ação sugerido
 function generateActionPlan() {
     const plans = [];
     
@@ -182,6 +184,7 @@ function generateActionPlan() {
     return plans;
 }
 
+// CUSTOMIZÁVEL: Ajuste como o diagnóstico aparece visualmente
 function renderDiagnostico() {
     const bridge = document.getElementById('diagnosticoBridge');
     const tituloEl = document.getElementById('diagnosticoTitulo');
@@ -204,6 +207,7 @@ function renderDiagnostico() {
     bridge.classList.remove('hidden');
 }
 
+// CUSTOMIZÁVEL: Mapeie termos das respostas para os diagnósticos acima
 function mapObstaculoToDiagnostico(obstaculo) {
     if (!obstaculo) {
         return inferDiagnosticoByContext();
@@ -230,6 +234,7 @@ function mapObstaculoToDiagnostico(obstaculo) {
     return inferDiagnosticoByContext();
 }
 
+// CUSTOMIZÁVEL: Regras de fallback caso a pergunta principal não cubra tudo
 function inferDiagnosticoByContext() {
     if (answers[3] && (answers[3].includes('Menos de 30 minutos') || answers[3].includes('Entre 30 minutos'))) {
         return 'tempo';
